@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from "../todo-item/TodoItem";
 
-const TodoField = ({todoList, changeStatus, deleleItem, editItem}) => {
+const TodoField = ({todoList, changeStatus, deleleItem, editItem, showEditField}) => {
     return (
         <div>
             {
@@ -13,6 +13,7 @@ const TodoField = ({todoList, changeStatus, deleleItem, editItem}) => {
                                      changeStatus={changeStatus}
                                      deleleItem={deleleItem}
                                      editItem={editItem}
+                                     showEditField={showEditField}
                     />
                 })
             }

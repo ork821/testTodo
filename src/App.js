@@ -12,7 +12,9 @@ class App extends Component {
             todos: [],
             input: '',
             id: 0,
-            edit: false
+            edit: false,
+            editableText: '',
+            editableId: null
         }
     }
 
@@ -27,10 +29,19 @@ class App extends Component {
         })
     }
 
-    editItem = (id, text) => {
+    showEditField = (id, todo) => {
+        this.setState({
+            edit: !this.state.edit,
+            editableText: todo,
+            editableId: id
+        })
+    }
+
+    editItem = (e, text) => {
+        e.preventDefault()
         this.setState({
             todos: this.state.todos.map(todo => {
-                if (todo.id === id) {
+                if (todo.id === this.state.editableId) {
                     todo.todo = text
                 }
                 return todo
@@ -80,9 +91,18 @@ class App extends Component {
                            input={this.state.input}
                 />
 
+                {
+                    this.state.edit ?
+                        <EditTodo input={this.state.editableText}
+                                  editItem={this.editItem}
+                        /> :
+                        ''
+                }
+
                 <TodoField todoList={this.state.todos}
                            changeStatus={this.changeStatus}
                            deleleItem={this.deleleItem}
+                           showEditField={this.showEditField}
                 />
             </div>
         );

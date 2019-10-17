@@ -2,7 +2,7 @@ import React from 'react';
 import './todo-item.css'
 import InputTodo from "../input-todo/InputTodo";
 
-const TodoItem = ({todo, changeStatus, id, done, deleleItem, editItem}) => {
+const TodoItem = ({todo, changeStatus, id, done, deleleItem, showEditField}) => {
     return (
         <div className='todo'>
             <input type='checkbox' onChange={
@@ -13,6 +13,7 @@ const TodoItem = ({todo, changeStatus, id, done, deleleItem, editItem}) => {
                 {todo}
             </p>
             <button onClick={() => deleleItem(id)}>X</button>
+            <button onClick={() => showEditField(id, todo)}>Edit</button>
         </div>
     );
 };

@@ -4,6 +4,7 @@ const InputTodo = ({addTodo, onSubmit, input}) => {
     return (
         <form onSubmit={(e) => onSubmit(e)}>
             <label>
+                Add Todo:
                 <input type="text"
                        name="name"
                        value={input}
